@@ -1,19 +1,10 @@
-const Options = ({ setFeedback }) => {
-  const handleFeedback = (type) => {
-    setFeedback((prevState) => ({
-      ...prevState,
-      [type]: prevState[type] + 1,
-    }));
-  };
-
+const Options = ({ updateFeedback, resetFeedback, totalFeedback }) => {
   return (
     <div className="btn">
-      <button onClick={() => handleFeedback('good')}>Good</button>
-      <button onClick={() => handleFeedback('neutral')}>Neutral</button>
-      <button onClick={() => handleFeedback('bad')}>Bad</button>
-      <button onClick={() => setFeedback({ good: 0, neutral: 0, bad: 0 })}>
-        Reset
-      </button>
+      <button onClick={() => updateFeedback('good')}>Good</button>
+      <button onClick={() => updateFeedback('neutral')}>Neutral</button>
+      <button onClick={() => updateFeedback('bad')}>Bad</button>
+      {totalFeedback > 0 && <button onClick={resetFeedback}>Reset</button>}
     </div>
   );
 };
